@@ -5,14 +5,14 @@
 ### Multi-Agent Market Intelligence Platform
 
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-*Production-grade AI platform that orchestrates intelligent agents to gather, analyze, and deliver real-time market intelligence from multiple data sources.*
+*A multi-agent market intelligence project that gathers, analyzes, and presents information from several data sources.*
 
 ---
 
@@ -24,7 +24,7 @@
 
 ## About
 
-**OpinionMap** is a production-grade, multi-agent market intelligence platform that leverages cutting-edge AI orchestration to provide comprehensive market analysis. Built with **LangGraph** for sophisticated agent workflow management and powered by **Google Gemini**, the platform autonomously scrapes, processes, and analyzes data from YouTube and Reddit (with a Twitter/X sentiment simulator for demo purposes).
+**OpinionMap** explores multi-agent market analysis with **LangGraph** and **Google Gemini**. It combines data from sources such as YouTube and Reddit, with a local simulator for Twitter/X sentiment. Its React and TypeScript dashboard presents the resulting workflows and reports.
 
 The platform employs **Retrieval-Augmented Generation (RAG)** with ChromaDB for contextual analysis, ensuring insights are grounded in real data. A beautiful **React + TypeScript** dashboard provides interactive visualizations, while **Prometheus + Grafana** deliver real-time observability.
 
@@ -64,7 +64,7 @@ Whether you're tracking competitor movements, analyzing market sentiment, or dis
 - 🎨 **Interactive Dashboard** — React + TypeScript UI with real-time data visualization and workflow management
 - 🔄 **Workflow Management** — Create, monitor, and control complex multi-agent analysis pipelines
 - 📈 **Comprehensive Monitoring** — Prometheus metrics, Grafana dashboards, and structured logging
-- 🔐 **Enterprise Security** — JWT authentication, rate limiting, CORS, and security headers
+- 🔐 **Security controls** — JWT authentication, rate limiting, CORS, and security headers
 - 🐳 **One-Command Deployment** — Full Docker Compose stack with health checks and auto-restart
 
 ---
@@ -180,7 +180,7 @@ Demo mode is intentional — it lets you run and demo the full multi-agent pipel
 ### 1. Environment Setup
 ```bash
 # Clone the repository (if you haven't already)
-git clone https://github.com/yourusername/OpinionMap.git
+git clone https://github.com/kandwalkartik/OpinionMap.git
 cd OpinionMap
 
 # Copy the environment file
@@ -208,7 +208,7 @@ Your secure deployment will now be running and accessible at `https://localhost`
 ```bash
 make setup    # Initial setup
 make dev      # Start development environment
-make test     # Run tests
+make test     # Prints the current test-suite status (no automated suite yet)
 make logs     # Follow Docker logs
 ```
 
@@ -293,6 +293,12 @@ OpinionMap/
 ```
 
 > **Note on tests:** an automated backend test suite is not yet implemented. `pytest` and `pytest-asyncio` are already declared in `backend/requirements.txt`, so `backend/tests/` can be added without further setup. Until then `make test` and `make test-cov` print a notice instead of running anything, and `make format` / `make lint` do the same (black, isort, ruff and mypy are intentionally not runtime dependencies).
+
+## Known limitations
+
+- A fresh setup runs with synthetic demo data by default. Twitter/X sentiment is always simulated, even when other sources use live APIs.
+- There is no automated backend test suite or published coverage result yet. The screenshots show the UI; they do not establish production readiness.
+- Live source coverage depends on API credentials, rate limits, and availability. Check the returned source data before using a report for decisions.
 
 ---
 
